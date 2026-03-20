@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "myproducoes"
+version = "0.1.0"
+description = "Gerenciador de producoes com cliente desktop PyQt preparado para backend desacoplado."
+requires-python = ">=3.11"
+dependencies = [
+  "PyQt6==6.6.1",
+  "PyQt6-Qt6==6.6.1",
+  "QtAwesome==1.3.1",
+  "SQLAlchemy~=2.0",
+  "alembic~=1.14",
+  "reportlab==4.0.7",
+  "qrcode[pil]==7.4.2",
+  "Pillow==10.1.0",
+  "matplotlib==3.8.2",
+  "natsort==8.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9",
+  "ruff>=0.12,<0.13",
+  "mypy>=1.11,<1.12",
+]
+
+[project.scripts]
+myproducoes-desktop = "src.__main__:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["alembic", "src/core/pdf"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N"]
+ignore = ["N802", "N803", "N806"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_unused_configs = true
+ignore_missing_imports = true
+packages = ["src"]
+exclude = "(^src/core/pdf/)"

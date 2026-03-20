@@ -23,6 +23,15 @@ LOG_FILE = BASE_DIR / 'production_manager.log'
 
 # Configurações de backup
 MAX_BACKUPS = 10
+AUTO_BACKUP_LAST_DATE_KEY = "backup.last_auto_backup_date"
+
+# Migrações
+ALEMBIC_INI_FILE = BASE_DIR / "alembic.ini"
+ALEMBIC_BASELINE_REVISION = "0001_baseline"
+
+# Listagem principal
+PAGE_SIZE_OPTIONS = [50, 100, 200]
+DEFAULT_PAGE_SIZE = 100
 
 # ================================
 # Colunas do Banco de Dados
@@ -63,7 +72,7 @@ DATE_COLUMNS = ["Data de Recebimento", "Data de Conclusão"]
 # Opções Padrão
 # ================================
 DEFAULT_STATUS_OPTIONS = ['Parado', 'Em Andamento', 'Finalizado']
-DEFAULT_STATUS_PAGAMENTO_OPTIONS = ["Em aberto", "Pago"]
+DEFAULT_STATUS_PAGAMENTO_OPTIONS = ["Em aberto", "Parcial", "Pago"]
 DEFAULT_TIPOS_PRODUCAO = ["Formatura", "Newborn", "Casamento"]
 
 # ================================
